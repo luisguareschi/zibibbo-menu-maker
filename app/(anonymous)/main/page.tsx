@@ -78,8 +78,8 @@ const MainPage = () => {
   useEffect(() => {
     if (existingMenu && !checked) {
       setMenu(existingMenu);
-      setChecked(true);
     }
+    setChecked(true);
   }, [checked]);
 
   if (!checked) return <FullScreenLoading />;
