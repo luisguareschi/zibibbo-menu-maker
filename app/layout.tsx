@@ -23,8 +23,8 @@ const font = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "BaseApp",
-  description: "A next js template for building apps",
+  title: "Zibibbo Menu Maker",
+  description: "A simple menu maker for Zibibbo",
 };
 
 export default function RootLayout({
