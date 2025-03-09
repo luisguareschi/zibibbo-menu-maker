@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        brand: "#670c1e",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -31,6 +34,10 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontFamily: {
+        aramo: ["var(--font-aramo)"],
+        goudi: ["var(--font-goudi)"],
       },
     },
   },

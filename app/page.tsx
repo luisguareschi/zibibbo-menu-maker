@@ -5,15 +5,17 @@ import FullScreenLoading from "@/components/common/full-screen-loading";
 
 export default function Main() {
   const router = useRouter();
-  const { user, isLoading } = useCurrentUser();
+  // const { user, isLoading } = useCurrentUser();
 
-  if (user) {
-    router.replace("/home");
-  }
+  // if (user) {
+  //   router.replace("/home");
+  // }
 
-  if (!isLoading && !user) {
-    router.replace("/login");
-  }
+  // if (!isLoading && !user) {
+  //   router.replace("/login");
+  // }
+
+  router.replace("/main");
 
   return <FullScreenLoading />;
 }
