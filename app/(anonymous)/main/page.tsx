@@ -4,12 +4,13 @@ import { MenuPreview } from "@/components/common/menuPreview";
 import { Menu } from "@/types/menu";
 import { useStore } from "@/lib/useStore";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import FullScreenLoading from "@/components/common/full-screen-loading";
 import { Button } from "@/components/ui/button";
 import { Download, Import, Save } from "lucide-react";
 import html2canvas from "html2canvas";
 import { toast } from "react-hot-toast";
+
 const decodeMenu = (string: string) => {
   try {
     return JSON.parse(decodeURIComponent(string));
@@ -126,4 +127,12 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+const Wrapper = () => {
+  return (
+    <Suspense>
+      <MainPage />
+    </Suspense>
+  );
+};
+
+export default Wrapper;
