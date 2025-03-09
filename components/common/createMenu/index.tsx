@@ -2,10 +2,9 @@ import { Button } from "@/components/ui/button";
 import { useStore } from "@/lib/useStore";
 import { Plus } from "lucide-react";
 import { MenuGroup } from "./menuGroup";
-import { generateId, Menu } from "@/types/menu";
-import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { BarLoader } from "../bar-loader";
+import { generateId } from "@/types/menu";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export const CreateMenuForm = () => {
   const router = useRouter();
@@ -27,7 +26,7 @@ export const CreateMenuForm = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10 h-full max-h-full overflow-y-auto hide-scrollbar">
+    <div className="flex flex-col gap-10 h-full max-h-full overflow-y-auto hide-scrollbar pl-1">
       <h1 className="text-2xl text-gray-600">Create Menu</h1>
       {menu.menuGroups.map((menuGroup) => (
         <MenuGroup key={menuGroup.id} menuGroup={menuGroup} />
