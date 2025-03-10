@@ -31,7 +31,11 @@ export const CreateMenuForm = () => {
       {menu.menuGroups.map((menuGroup) => (
         <MenuGroup key={menuGroup.id} menuGroup={menuGroup} />
       ))}
-      <Button variant="default" onClick={handleAddGroup}>
+      <Button
+        variant="default"
+        onClick={handleAddGroup}
+        className="sticky bottom-0 left-0"
+      >
         <Plus />
         Add Group
       </Button>

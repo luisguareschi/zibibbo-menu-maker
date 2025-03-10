@@ -85,15 +85,15 @@ const MainPage = () => {
   if (!checked) return <FullScreenLoading />;
 
   return (
-    <div className="grid grid-cols-2 h-full w-full bg-gray-100 p-6 gap-6">
-      <nav className="bg-white h-full w-full rounded-lg p-5 col-span-2 flex gap-4 justify-start items-center">
+    <div className="flex flex-col h-full w-full bg-gray-100 p-6 gap-6 md:grid md:grid-cols-2 grid-rows-[auto 1fr] overflow-auto">
+      <nav className="bg-white w-full rounded-lg p-5 md:col-span-2 flex gap-4 justify-start items-center h-fit flex-col md:flex-row flex-wrap">
         <h1 className="text-2xl font-semibold text-gray-700 mr-auto">
           Menu Maker
         </h1>
         <Button
           size="lg"
           variant="outline"
-          className="flex flex-row gap-2 items-center justify-center"
+          className="flex flex-row gap-2 items-center justify-center md:w-fit w-full"
           onClick={handleImport}
         >
           <Import className="w-4 h-4" />
@@ -102,7 +102,7 @@ const MainPage = () => {
         <Button
           size="lg"
           variant="outline"
-          className="flex flex-row gap-2 items-center justify-center"
+          className="flex flex-row gap-2 items-center justify-center md:w-fit w-full"
           onClick={handleSave}
         >
           <Save className="w-4 h-4" />
@@ -110,17 +110,17 @@ const MainPage = () => {
         </Button>
         <Button
           size="lg"
-          className="flex flex-row gap-2 items-center justify-center"
+          className="flex flex-row gap-2 items-center justify-center md:w-fit w-full"
           onClick={handleExport}
         >
           <Download className="w-4 h-4" />
           Export
         </Button>
       </nav>
-      <div className="bg-white h-full w-full rounded-lg p-5 overflow-y-auto">
+      <div className="bg-white h-full w-full rounded-lg p-5 overflow-y-auto min-h-[500px] max-h-[500px] md:max-h-full">
         <CreateMenuForm />
       </div>
-      <div className="bg-white h-full w-full rounded-lg p-5 overflow-y-auto">
+      <div className="bg-white h-full w-full rounded-lg p-5 overflow-y-auto min-h-[80vh] md:min-h-full">
         <MenuPreview onPreviewChange={setPreviewElement} />
       </div>
     </div>

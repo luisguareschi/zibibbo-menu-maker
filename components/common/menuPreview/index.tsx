@@ -29,7 +29,7 @@ export const MenuPreview = ({ onPreviewChange }: MenuPreviewProps) => {
 
   return (
     <div className="w-full h-full flex flex-col gap-4 overflow-auto justify-start items-start pb-10">
-      <div className="sticky top-0 bg-white flex flex-col justify-start items-start gap-2 w-full z-20 border-b border-gray-100 pb-4">
+      <div className="sticky top-0 left-0 bg-white flex flex-col justify-start items-start gap-2 w-full z-20 border-b border-gray-100 pb-4">
         <h1 className="text-2xl text-gray-600 text-left w-full">
           Preview ({Math.round(zoom * 100)}%)
         </h1>
