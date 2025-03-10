@@ -29,15 +29,30 @@ const MainPage = () => {
   );
 
   const handleExport = () => {
-    // export the previewRef as an image
-    html2canvas(previewElement as HTMLDivElement).then((canvas) => {
-      const image = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = image;
-      link.download = "menu.png";
-      link.click();
-    });
-    toast.success("Menu exported successfully");
+    // Get the original element that's being scaled
+    const originalElement = previewElement?.querySelector(
+      'div[style*="transform"]',
+    ) as HTMLElement;
+
+    if (originalElement) {
+      // Temporarily remove scaling for the export
+      const originalTransform = originalElement.style.transform;
+      originalElement.style.transform = "scale(1)";
+
+      html2canvas(originalElement).then((canvas) => {
+        const image = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = "menu.png";
+        link.click();
+
+        // Restore the original scaling
+        originalElement.style.transform = originalTransform;
+      });
+      toast.success("Menu exported successfully");
+    } else {
+      toast.error("Could not find the menu element to export");
+    }
   };
 
   const handleSave = () => {

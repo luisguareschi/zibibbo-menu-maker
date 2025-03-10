@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Minus, PlusIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-const A4_WIDTH = 1414;
-const A4_HEIGHT = 2000;
+export const A4_WIDTH = 1414;
+export const A4_HEIGHT = 2000;
 
 interface MenuPreviewProps {
   onPreviewChange: (previewElement: HTMLDivElement) => void;
@@ -19,7 +19,8 @@ export const MenuPreview = ({ onPreviewChange }: MenuPreviewProps) => {
   const previewRef = useRef<HTMLDivElement>(null);
 
   const handleZoom = (value: number) => {
-    if (zoom === 0.1 || zoom === 1) return;
+    if (Math.round(zoom * 100) === 100 && value > 0) return;
+    if (Math.round(zoom * 100) === 10 && value < 0) return;
     setZoom(zoom + value);
   };
 
@@ -34,13 +35,19 @@ export const MenuPreview = ({ onPreviewChange }: MenuPreviewProps) => {
           Preview ({Math.round(zoom * 100)}%)
         </h1>
         <div className="flex flex-row gap-2 items-center">
-          <Button variant="outline" size="icon" onClick={() => handleZoom(0.1)}>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => handleZoom(0.1)}
+            disabled={Math.round(zoom * 100) === 100}
+          >
             <PlusIcon className="w-4 h-4" />
           </Button>
           <Button
             variant="outline"
             size="icon"
             onClick={() => handleZoom(-0.1)}
+            disabled={Math.round(zoom * 100) === 10}
           >
             <Minus className="w-4 h-4" />
           </Button>
@@ -48,7 +55,7 @@ export const MenuPreview = ({ onPreviewChange }: MenuPreviewProps) => {
       </div>
       <div
         ref={previewRef}
-        className="origin-top-left mx-auto"
+        className="origin-top-left mx-auto bg-white select-none"
         style={{ height: A4_HEIGHT * zoom, width: A4_WIDTH * zoom }}
       >
         <div
